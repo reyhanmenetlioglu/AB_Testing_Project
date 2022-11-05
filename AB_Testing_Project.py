@@ -63,8 +63,8 @@ df_CT.head()
 # A/B Test Hypothesis
 ######################################
 
-# H0 : M1 = M2 (average bidding & maximum bidding'e ait purchase mean değerleri arasında istatistiksel olarak anlamlı bir fark yoktur.)
-# H1 : M1 != M2 (average bidding & maximum bidding'e ait purchase mean değerleri arasında istatistiksel olarak anlamlı bir fark yoktur.)
+# H0 : M1 = M2 (There is no statistically significant difference between the purchase mean values of average bidding & maximum bidding.)
+# H1 : M1 != M2 (There is a statistically significant difference between the purchase mean values of average bidding & maximum bidding.)
 
 # region Analysing Purchase Variable for Control and Test Groups
 
@@ -86,50 +86,50 @@ df_CT.describe().T
 
 # region Normality Test :
 
-# H0 : Normal dağılım varsayımı sağlanmaktadır.
-# H1 : Normal dağılım varsayımı sağlanmamaktadır.
+# H0 : The assumption of normal distribution is provided.
+# H1 : Normal distribution assumption not provided.
 
-# p-value < ise 0.05'ten H0 RED.
-# p-value > 0.05 H0 REDDEDILEMEZ.
+# p-value < ise 0.05'ten H0 REJECT.
+# p-value > 0.05 H0 FAIL TO REJECT.
 
 # Purchase_C from Control Group : p-value = 0.5891
 
 test_stat, pvalue = shapiro(df_CT["Purchase_C"])
 print('Test Stat = %.4f, p-value = %.4f' % (test_stat, pvalue))
 
-# p-value = 0.5891 > 0.05, H0 : REDDEDILEMEZ
+# p-value = 0.5891 > 0.05, H0 : FAIL TO REJECT
 
 # Purchase_T from Test Group : p-value = 0.1541
 
 test_stat, pvalue = shapiro(df_CT["Purchase_T"])
 print('Test Stat = %.4f, p-value = %.4f' % (test_stat, pvalue))
 
-# p-value = 0.1541 > 0.05, H0 : REDDEDILEMEZ
+# p-value = 0.1541 > 0.05, H0 : FAIL TO REJECT
 
-# Normal dağılım varsayımı sağlandığından H0 reddedilemez.
+# H0 cannot be rejected as the assumption of normal distribution is satisfied.
 
 # endregion
 
 # region Homogeneity of Variance :
 
-# H0 : Varyanslar homojendir.
-# H1 : Varyanslar homojen değildir.
+# H0 : Variances are homogeneous.
+# H1 : Variances are not homogeneous.
 
-# for p-value < 0.05, H0 : RED.
-# for p-value > 0.05, H0 : REDDEDILEMEZ.
+# for p-value < 0.05, H0 : REJECT.
+# for p-value > 0.05, H0 : FAIL TO REJECT.
 
 test_stat, pvalue = levene(df_CT['Purchase_C'],
                            df_CT['Purchase_T'])
 print("Test stat = %.4f, p-value = %.4f" % (test_stat, pvalue))
 
-# p-value = 0.1083 > 0.05 H0 : REDDEDILEMEZ
-# Varyanslar homojendir.
+# p-value = 0.1083 > 0.05 H0 : FAIL TO REJECT
+# Variances are homogeneous.
 
 # endregion
 
-# Varsayım kotrolünde :
-#   - 1. Normallik Varsayımı
-#   - 2. Varyans Homojenliği varsayımları sağlandığından :
+# Since 
+# - 1. Normality Assumption
+# - 2. Variance Homogeneity provided in assumption control:
 
 # region Two-Sample t-Test (Parametric Test) :
 
@@ -138,14 +138,13 @@ test_stat, pvalue = ttest_ind(df_CT['Purchase_C'],
                               equal_var=True)
 print('Test stat = %.4f, p-value = %.4f' % (test_stat, pvalue))
 
-# p-value = 0.3493 > 0.05, H0 : REDDEDILEMEZ
+# p-value = 0.3493 > 0.05, H0 : FAIL TO REJECT
 
 # endregion
 
 # region Conclusion
 
-# Test sonucunda elde edilen p_value değerini göz önünde bulundurarak, H0 'ın reddedilemez olması sebebiyle,
-# Kontrol ve Test Grupları için Purchase mean'ler arasında istatistiki olarak anlamlı bir fark  yoktur.
+# Considering the p_value obtained as a result of the test, since H0 is non-rejectable,
+# There is no statistically significant difference between Purchase mean for Control and Test Groups.
 
 # endregion
-
