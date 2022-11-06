@@ -1,5 +1,5 @@
 ##### AB_Testing_Project
-##### Comparing bidding transform with AB Testing
+##### Comparing Bidding Transform with AB Testing
 
 ##### Business Problem :
 Facebook recently introduced a new bidding type, 'average bidding', as an alternative to the existing bidding type called 'maximum bidding'.\
