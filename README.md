@@ -1,4 +1,4 @@
-##### AB_Testing_Project
+## AB Testing Project
 ##### Comparing Bidding Transform with AB Testing
 
 ##### Business Problem :
