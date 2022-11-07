@@ -10,7 +10,7 @@ The ultimate success criterion is Purchase. Therefore, the focus is on the Purch
 In this data set, which includes the website information of a company, there is information such as the number of advertisements that users see and click, as well as earnings information from here.\
 There are two separate data sets, the control and test groups. These datasets are on separate pages of ab_testing.xlsxexcel. Maximum Bidding was applied to the control group and AverageBidding was applied to the test group.
 
-| Variables          |Languages                                                 |
+| Variables          | Meaning                                                  |
 |-------------------:|----------------------------------------------------------|
 |          Impression| The number of ad views.                                  |
 |          Click     | Number of clicks on the displayed ad                     |
